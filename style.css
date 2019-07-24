@@ -1,0 +1,536 @@
+/**********************************************
+*** GENERAL
+**********************************************/
+.land
+{
+    display: none;
+    width: 100vw;
+    height: 100vh;
+}
+.land h1{
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 45vh;
+    left: 20vw;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    font-family: Lato;
+    font-weight: 300;
+    position: relative;
+    height: 100vh;
+    color: #555;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
+.box
+{
+    text-align: center;
+    position:absolute;
+    top: 20%;
+    left: 48.5%;
+}
+
+.box:hover{
+    animation-duration: 1s;
+    animation-name: info;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+@keyframes info{
+    50%{
+        transform: scale(1.5);
+    }
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target
+{
+    visibility: visible;
+    opacity: 1;
+}
+  
+  .popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+    border-radius: 5px;
+  }
+  
+  .popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+  }
+  .popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .popup .close:hover {
+    color: #06D85F;
+  }
+  .popup .content {
+    overflow: auto;
+  }
+  
+  @media screen and (max-width: 700px){
+    .box{
+      width: 70%;
+    }
+    .popup{
+      width: 70%;
+    }
+  }
+
+.wrapper {
+    width: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.player-0-panel,
+.player-1-panel {
+    width: 50%;
+    float: left;
+    height: 600px;
+    padding: 100px;
+}
+
+
+
+/**********************************************
+*** PLAYERS
+**********************************************/
+
+.player-name {
+    font-size: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 100;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.player-score {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 100;
+    color: #EB4D4D;
+    margin-bottom: 130px;
+}
+
+.active { background-color: #f7f7f7; }
+.active .player-name { font-weight: 300; }
+
+.active .player-name::after {
+    content: "\2022";
+    font-size: 47px;
+    position: absolute;
+    color: #EB4D4D;
+    top: -7px;
+    right: 10px;
+    
+}
+
+.player-current-box {
+    background-color: #EB4D4D;
+    color: #fff;
+    width: 40%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.player-current-label {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #222;
+}
+
+.player-current-score {
+    font-size: 30px;
+}
+
+button {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover { font-weight: 600; }
+button:hover i { margin-right: 10px; }
+
+button:focus {
+    outline: none;
+}
+
+i {
+    color: #EB4D4D;
+    display: inline-block;
+    font-size: 32px;
+    line-height: 1;
+    vertical-align: text-top;
+    margin-top: -4px;
+    transition: margin 0.3s;
+}
+
+.btn-new { 
+    height: 50px;
+    top: 45px;}
+.btn-roll { top: 403px;}
+.btn-hold { top: 467px;}
+
+.dice {
+    position: absolute;
+    left: 50%;
+    top: 178px;
+    transform: translateX(-50%);
+    height: 100px;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+
+.winner { background-color: #f7f7f7; }
+.winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.rone,.rtwo,.hone,.htwo{
+    display: none;
+}
+
+#dice-2
+{
+    display: none;
+}
+
+#hold
+{
+    display: none;
+}
+
+img{
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) and (orientation:portrait){
+
+.box{
+    top: 48%;
+    left: -25%;
+}
+
+    .wrapper {
+        width: 90vw;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+.active
+{
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-name: blinkactive;    
+}
+
+@keyframes blinkactive {
+    0%
+    {
+        background-color: #fff;
+    }
+    50%
+    {
+        background-color: #d3e3da;
+    }
+    100%
+    {
+        background-color: #fff;
+    }
+}
+
+.player-0-panel,
+.player-1-panel {
+    width: 100%;
+    height: 50%;
+    padding: 0px;
+}
+
+.pOne {
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    text-align: center;
+    transform: rotate(180deg);
+}
+.pTwo
+{
+    width: 100%;
+    position: absolute;
+    bottom:1%;
+}
+.active .player-name::after {
+    display: none;
+}
+.sOne
+{
+    position: absolute;
+    top: 25%;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    transform: rotate(180deg);
+}
+.sTwo
+{
+    position: absolute;
+    display: flex;
+    top: 60%;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-hold,.btn-roll{
+    display: none;
+}
+.cone{
+    position: relative;
+    top:35%;
+    display: grid;
+    grid-template-areas: "h cs cs cs r";
+    width:90%;
+    margin: auto;
+    height: 50px;
+    transform: rotate(180deg);
+}
+.rone{
+    grid-area: r;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:20px;
+}
+.hone
+{
+    grid-area: h;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:20px;
+}
+.cOne
+{
+    grid-area: cs;
+    width: 150px;
+    height: 80px;
+}
+.ctwo{
+    position: relative;
+    top:50%;
+    display: grid;
+    grid-template-areas: "h cs cs cs r";
+    width:90%;
+    margin: auto;
+    height: 50px;
+}
+.rtwo{
+    grid-area: r;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:20px;
+}
+.htwo
+{
+    grid-area: h;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:20px;
+}
+.cTwo
+{
+    grid-area: cs;
+    width: 150px;
+    height: 80px;
+}
+
+.btn-new
+{
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    top: 46%;
+    left: -10%;
+    transform: rotate(-90deg);
+}
+
+.dice
+{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#dice-1{
+   visibility: hidden;
+}
+.hold
+{
+    position: absolute;
+    top: 47%;
+    right: 10%;
+}
+.hold i
+{
+    font-size: 50px;
+}
+#dice-2{
+    display: block;
+}
+#dice-2:hover{
+    animation-duration: 1s;
+    animation-name: dice;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes dice {
+    50%
+    {
+        top: 40%;
+        left: 35%;
+        transform: scale(0.5);
+    }
+}
+
+#hold
+{
+    display: block;
+}
+}
+
+@media only screen and (max-width: 360px) and (orientation:portrait){
+    .pOne,.pTwo{
+        font-size: 18px;
+    }
+    .sOne{
+        margin-top: 5px;
+        font-size: 60px;
+    }
+    .sTwo{
+        margin-top: 5px;
+        font-size: 60px;
+    }
+    .hold
+{
+    position: absolute;
+    top: 46%;
+    right: 10%;
+}
+}
+
+@media only screen and (max-width: 900px) and (orientation:landscape)
+{
+    .land{
+        display: block;
+    }
+    .main{
+        display: none;
+    }
+}
